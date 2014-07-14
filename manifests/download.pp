@@ -130,7 +130,7 @@ define archive::download (
   case $ensure {
     present: {
       exec {"download archive $name and check sum":
-        command   => "curl -s -S ${insecure_arg} ${redirect_arg} -o ${src_target}/${name} ${url}",
+        command   => "curl -vvv ${insecure_arg} ${redirect_arg} -o ${src_target}/${name} ${url}",
         creates   => "${src_target}/${name}",
         logoutput => true,
         timeout   => $timeout,
